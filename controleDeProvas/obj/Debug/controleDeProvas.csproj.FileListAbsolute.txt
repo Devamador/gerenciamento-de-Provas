@@ -1,0 +1,9 @@
+C:\Users\Rodrigo\Documents\Faculdade\Poo\c#\controleDeProvas\controleDeProvas\bin\Debug\controleDeProvas.exe.config
+C:\Users\Rodrigo\Documents\Faculdade\Poo\c#\controleDeProvas\controleDeProvas\bin\Debug\controleDeProvas.exe
+C:\Users\Rodrigo\Documents\Faculdade\Poo\c#\controleDeProvas\controleDeProvas\bin\Debug\controleDeProvas.pdb
+C:\Users\Rodrigo\Documents\Faculdade\Poo\c#\controleDeProvas\controleDeProvas\obj\Debug\controleDeProvas.csprojAssemblyReference.cache
+C:\Users\Rodrigo\Documents\Faculdade\Poo\c#\controleDeProvas\controleDeProvas\obj\Debug\controleDeProvas.csproj.CoreCompileInputs.cache
+C:\Users\Rodrigo\Documents\Faculdade\Poo\c#\controleDeProvas\controleDeProvas\obj\Debug\controleDeProvas.exe
+C:\Users\Rodrigo\Documents\Faculdade\Poo\c#\controleDeProvas\controleDeProvas\obj\Debug\controleDeProvas.pdb
+C:\Users\Rodrigo\Documents\Faculdade\Poo\c#\controleDeProvas\controleDeProvas\obj\Debug\controleDeProvas.Form1.resources
+C:\Users\Rodrigo\Documents\Faculdade\Poo\c#\controleDeProvas\controleDeProvas\obj\Debug\controleDeProvas.csproj.GenerateResource.cache
