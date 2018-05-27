@@ -92,6 +92,7 @@ namespace controleDeProvas
 
         public void lancarNota(Provao provaAluno)
         {
+            
             try
             {
                  for (int i = 0; i < provaAluno.aluno.Count; i++)
@@ -99,7 +100,7 @@ namespace controleDeProvas
                     if (corrigirProva(provaAluno.aluno[i]))
                     {
                         float nota;
-                        Console.WriteLine("Informe a nota do aluno: " + provaAluno.aluno[i].nome);
+                        Console.Write("Informe a nota do aluno " + provaAluno.aluno[i].nome + ": ");
                         nota = float.Parse(Console.ReadLine());
                         provaAluno.aluno[i].minhasProvas[0].nota = nota;
                     }
@@ -115,11 +116,19 @@ namespace controleDeProvas
 
        public Provas criarProva()
         {
+            int op;
+            string assunto;
             Questoes questoes = new Questoes();
             questoes.nDiscursivas = 5;
             questoes.nObjetivas = 5;
-            Provas prova = new Provas(listaDisciplina[0], "Herança",questoes,10);
-            Console.WriteLine("Prova Criada");
+            Console.Write("Disciplina: ");
+            for(int i = 0; i<listaDisciplina.Count;i++)
+                Console.WriteLine("[{0}] {1}",(i +1),listaDisciplina[i].nomeDisciplina);
+            op = int.Parse(Console.ReadLine());
+            Console.Write("Assunto: ");
+            assunto = Console.ReadLine();
+            Provas prova = new Provas(listaDisciplina[op - 1], assunto,questoes,10);
+            
             provaCriada = true;
 
             return prova;

@@ -33,6 +33,7 @@ namespace controleDeProvas
             else
                 Console.WriteLine("Sala lotada!!");
 
+
         }
         
         /*Aluno dadoAluno;

@@ -17,18 +17,31 @@ namespace controleDeProvas
             Turma turma1 = new Turma();
            
             List<Professor> listaProfessor = new List<Professor>();
+
+            List<Provao> listaProvas = new List<Provao>();
+
+            List<Disciplina> listDisciplinas = new List<Disciplina>();
+
             int op, opProf;
             int idade, matricula;
-            string nome, curso, disciplina;
+            string nome, curso, disciplina, data, hora;
             double salario;
+
+            
             do
             {
                 Console.WriteLine("[1]Cadastrar aluno");
                 Console.WriteLine("[2]Cadastrar Professor");
                 Console.WriteLine("[3]Criar prova");
                 Console.WriteLine("[4]Lançar nota");
+                Console.WriteLine("[5]Mostrar lista de alunos");
+                Console.WriteLine("[6]Lista de professores");
+                Console.WriteLine("[7]Lista de disciplinas dos professores");
+                Console.WriteLine("[8]Mostrar notas dos alunos");
                 Console.WriteLine("[0]Sair");
+                Console.Write("\tOPÇÃO: ");
                 op = int.Parse(Console.ReadLine());
+                Console.Clear();
 
                 switch (op)
                 {
@@ -58,30 +71,114 @@ namespace controleDeProvas
                         idade = int.Parse(Console.ReadLine());
                         Console.Write("Matricula: ");
                         matricula = int.Parse(Console.ReadLine());
-                                     
-                        Console.Write("Disciplina: ");
-                        disciplina = Console.ReadLine();
-                        Professor prof = new Professor(nome, matricula, idade,salario);
-                        Disciplina disc = new Disciplina(disciplina);
-                        //prof.listaDisciplina.ForEach(i => prof.listaDisciplina.Add(disc)) ;
-                        prof.listaDisciplina.Add(disc);
+                        Professor prof = new Professor(nome, matricula, idade, salario);
+                        do
+                        {
+                            Console.Write("Disciplina: ");
+                            disciplina = Console.ReadLine();
+                            Disciplina disc = new Disciplina(disciplina);
+                            prof.listaDisciplina.Add(disc);
+                            if (!listDisciplinas.Contains(disc))
+                                listDisciplinas.Add(disc);
+                            Console.Write("deseja adicionar outra disciplina para o Professor " + prof.nome + "[1]SIM [2] NAO");
+                            op = int.Parse(Console.ReadLine());
+                        } while (op != 2);
+                        
                         listaProfessor.Add(prof);
+                        Console.WriteLine("Professor {0} CADASTRADO COM SUCESSO",prof.nome);
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
 
                     case 3:
-                        Console.WriteLine("Acessar como: ");
-                        for(int i = 0; i < listaProfessor.Count; i++)
+                        if(listaProfessor.Count != 0)
                         {
-                            Console.WriteLine("[{0}] {1}]",(i+1),listaProfessor[i].nome);
+                            Console.WriteLine("Acessar como: ");
+                            for (int i = 0; i < listaProfessor.Count; i++)
+                            {
+                                Console.WriteLine("[{0}] {1}", (i + 1), listaProfessor[i].nome);
+                            }
+                            opProf = int.Parse(Console.ReadLine());
+                            Console.Write("Data da prova: ");
+                            data = Console.ReadLine();
+                            Console.Write("Hora: ");
+                            hora = Console.ReadLine();
+
+                            Provao provao = new Provao(data, hora, listaProfessor[opProf - 1].criarProva());
+                            Console.WriteLine("Prova Criada");
+                            turma1.listaAlunos.ForEach(i => i.minhasProvas.Add(provao));
+                            for(int i = 0; i < turma1.listaAlunos.Count;i++)
+                                provao.aluno.Add(turma1.listaAlunos[i]);
+
+                            listaProvas.Add(provao);
+                            //listaProfessor.ForEach(i => Console.WriteLine(" {0}",i.nome));
+                            listaProfessor[opProf - 1].aplicarProva();
+                            turma1.listaAlunos.ForEach(i => i.fazerProva(listaProfessor[opProf - 1]));
+                            
                         }
-                        opProf = int.Parse(Console.ReadLine());
-                        listaProfessor[opProf - 1].criarProva();
-                        //listaProfessor.ForEach(i => Console.WriteLine(" {0}",i.nome));
+                        else
+                        {
+                            Console.WriteLine("Lista de Professor vazia!!");
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
 
                     case 4:
+                        if(listaProvas.Count != 0)
+                        {
+                            Console.WriteLine("Acessar como: ");
+                            for (int i = 0; i < listaProfessor.Count; i++)
+                                Console.WriteLine("[{0}] {1}", (i + 1), listaProfessor[i].nome);
 
+                            opProf = int.Parse(Console.ReadLine());
+                            listaProfessor[opProf - 1].lancarNota(listaProvas[0]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Lista de Provas ou professor vazia!!");
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
+
+                    case 5:
+                        Console.WriteLine("Alunos da turma "+turma1.numSala);
+                        turma1.listaAlunos.ForEach(i => Console.WriteLine("  -"+i.nome));
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+
+                    case 6:
+                        listaProfessor.ForEach(i => Console.WriteLine("  -"+i.nome));
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+
+                    case 7:
+                        foreach (Professor disciplinas in listaProfessor)
+                        {
+                            Console.WriteLine("Lista de disciplinas do professor " + disciplinas.nome);
+                            disciplinas.listaDisciplina.ForEach(i => Console.WriteLine("  -" + i.nomeDisciplina));
+                            Console.WriteLine();
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+
+                    case 8:
+                        for(int i = 0; i < turma1.listaAlunos.Count; i++)
+                        {
+                            Console.WriteLine("Notas do(a) "+turma1.listaAlunos[i].nome);
+                            Console.WriteLine();
+                            turma1.listaAlunos[i].minhasProvas.ForEach(j => Console.WriteLine(j.dadosProva._disciplina.nomeDisciplina
+                                +": "+j.nota));
+                        }
+                        //turma1.listaAlunos.ForEach(i => Console.WriteLine(" : "+i.minhasProvas[0].nota));
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+
                     case 0:
                         break;
                 }
