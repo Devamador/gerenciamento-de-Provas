@@ -16,11 +16,12 @@ namespace controleDeProvas
         {
             Turma turma1 = new Turma();
            
-            List<Professor> listaProfessor = new List<Professor>();
+            List<Professor> listaProfessor = new List<Professor>();//lista com as informações de todos os professores
 
-            List<Provao> listaProvas = new List<Provao>();
+            List<Provao> listaProvas = new List<Provao>();//lista com as informações de todas as provas
 
-            List<Disciplina> listDisciplinas = new List<Disciplina>();
+            List<Disciplina> listDisciplinas = new List<Disciplina>();//lista com as informações de todas as disciplinas
+
 
             int op, opProf;
             int idade, matricula;
