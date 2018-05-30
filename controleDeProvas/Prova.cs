@@ -6,30 +6,31 @@ using System.Threading.Tasks;
 
 namespace controleDeProvas
 {
-    class Provas
+    class Prova
     {
+        private string _data;
+        private string _hora;
+        public Aluno _aluno { get; set; }
         public Disciplina _disciplina { get; set; }
         private string _assunto;
         private Questoes _nQuestoes;
         private double _valor;
 
-        public Provas(string assunto, double valor)
-        {
-            this._assunto = assunto;
-            this._valor = valor;
-        }
+        private double _nota;
 
-        
+       // public List<Aluno> alunos { get; }
 
-        public Provas(Disciplina _disciplina,string _assunto,Questoes _nQuestoes, double _valor)
+        public Prova(string _data,string _hora,Aluno _aluno, Disciplina _disciplina, string _assunto, Questoes _nQuestoes, double _valor)
         {
-            this._disciplina = _disciplina;
+            this._data = _data;
+            this._hora = _hora;
+            this._aluno = _aluno;
             this._disciplina = _disciplina;
             this._assunto = _assunto;
             this._nQuestoes = _nQuestoes;
-           
             this._valor = _valor;
-           
+
+            //alunos = new List<Aluno>();
         }
 
         public Disciplina disciplina
@@ -62,9 +63,24 @@ namespace controleDeProvas
             }
         }
 
-        public override string ToString()
+        public string data
         {
-            return "Assunto: "+assunto+"\nvalor: "+valor;
+
+            get { return this._data; }
+            set { this._data = value; }
+        }
+
+        public string hora
+        {
+            get { return this._hora; }
+            set { this._hora = value; }
+        }
+
+
+        public double nota
+        {
+            get { return this._nota; }
+            set { this._nota = value; }
         }
     }
 }

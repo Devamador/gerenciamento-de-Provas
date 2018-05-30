@@ -17,6 +17,7 @@ namespace controleDeProvas
         private bool _provaCriada;
 
         public List<Disciplina> listaDisciplina { get; }
+        public List<Prova> prova { get; }
 
         /**
          * Construtor da Classe
@@ -28,6 +29,7 @@ namespace controleDeProvas
             this._aplicada = false;
             this._provaCriada = false;
             listaDisciplina = new List<Disciplina>();
+            prova = new List<Prova>();
         }
 
         /**
@@ -65,10 +67,10 @@ namespace controleDeProvas
         public void aplicarProva()
         {
             
-            if (provaCriada)
+            //if (provaCriada)
                 aplicada = true;
-            else
-                Console.WriteLine("Nenhuma prova foi criada!!");
+           // else
+             //   Console.WriteLine("Nenhuma prova foi criada!!");
         }
 
         
@@ -90,31 +92,27 @@ namespace controleDeProvas
          * Metodos da Classe
          * */
 
-        public void lancarNota(Provao provaAluno)
+        public void lancarNota(Prova provaAluno)
         {
             
             try
             {
-                 for (int i = 0; i < provaAluno.aluno.Count; i++)
-                 {
-                    if (corrigirProva(provaAluno.aluno[i]))
-                    {
-                        float nota;
-                        Console.Write("Informe a nota do aluno " + provaAluno.aluno[i].nome + ": ");
-                        nota = float.Parse(Console.ReadLine());
-                        provaAluno.aluno[i].minhasProvas[0].nota = nota;
-                    }
-                    
-                 }
+             
+                if (corrigirProva(provaAluno._aluno))
+                {
+                    double nota;
+                    Console.Write("Informe a nota do aluno " + provaAluno._aluno.nome + ": ");
+                    nota = double.Parse(Console.ReadLine());
+                    provaAluno.nota = nota;      
+                }
             }
             catch(FormatException e)
             {
                 MessageBox.Show(e.Message, "Bloco Catch");
-            } 
-          
+            }
         }
 
-       public Provas criarProva()
+      /* public Provas criarProva()
         {
             int op;
             string assunto;
@@ -132,7 +130,7 @@ namespace controleDeProvas
             provaCriada = true;
 
             return prova;
-       }
+       }*/
 
         public override string ToString()
         {

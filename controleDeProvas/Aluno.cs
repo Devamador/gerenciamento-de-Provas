@@ -14,7 +14,8 @@ namespace controleDeProvas
         //private double _nota;
 
         
-        public List<Provao> minhasProvas { get; set; }
+        public List<Prova> minhasProvas { get; }
+         
 
         //public List<Turma> minhaTurma { get; }
 
@@ -26,8 +27,8 @@ namespace controleDeProvas
         
             this._curso = _curso;
             this._feito = false;
-            
-            minhasProvas = new List<Provao>();
+
+            minhasProvas = new List<Prova>();
         }
 
         /**
