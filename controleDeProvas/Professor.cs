@@ -16,15 +16,15 @@ namespace controleDeProvas
         private bool _aplicada;
         private bool _provaCriada;
 
-        public List<Disciplina> listaDisciplina { get; }
-        public List<Prova> prova { get; }
+        public List<Disciplina> listaDisciplina { get; }//lista de disciplina do professor
+        public List<Prova> prova { get; }//lista de provas criada
 
         /**
          * Construtor da Classe
          * */
-        public Professor(string _nome, int _matricula,int _idade,/*string _disciplina,*/ double _salario):base(_nome,_matricula,_idade)
+        public Professor(string _nome, int _matricula,int _idade, double _salario):base(_nome,_matricula,_idade)
         {
-            //this._disciplina = _disciplina;
+            
             this._salario = _salario;
             this._aplicada = false;
             this._provaCriada = false;
@@ -35,12 +35,7 @@ namespace controleDeProvas
         /**
          * Propriedades da Classe
          * */
-        /*public string disciplina
-        {
-
-            get { return this._disciplina; }
-            set { this._disciplina = value; }
-        }*/
+       
 
         public double salario
         {
@@ -67,10 +62,8 @@ namespace controleDeProvas
         public void aplicarProva()
         {
             
-            //if (provaCriada)
-                aplicada = true;
-           // else
-             //   Console.WriteLine("Nenhuma prova foi criada!!");
+            aplicada = true;
+          
         }
 
         
@@ -112,25 +105,6 @@ namespace controleDeProvas
             }
         }
 
-      /* public Provas criarProva()
-        {
-            int op;
-            string assunto;
-            Questoes questoes = new Questoes();
-            questoes.nDiscursivas = 5;
-            questoes.nObjetivas = 5;
-            Console.Write("Disciplina: ");
-            for(int i = 0; i<listaDisciplina.Count;i++)
-                Console.WriteLine("[{0}] {1}",(i +1),listaDisciplina[i].nomeDisciplina);
-            op = int.Parse(Console.ReadLine());
-            Console.Write("Assunto: ");
-            assunto = Console.ReadLine();
-            Provas prova = new Provas(listaDisciplina[op - 1], assunto,questoes,10);
-            
-            provaCriada = true;
-
-            return prova;
-       }*/
 
         public override string ToString()
         {

@@ -67,7 +67,7 @@ namespace controleDeProvas
         {
 
             get { return this._data; }
-            set { this._data = value; }
+            set { this._data = value ; }
         }
 
         public string hora
@@ -80,7 +80,11 @@ namespace controleDeProvas
         public double nota
         {
             get { return this._nota; }
-            set { this._nota = value; }
+            set
+            {
+                if(value >= 0 && value <=10)//valida nota
+                    this._nota = value;
+            }
         }
     }
 }

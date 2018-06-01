@@ -9,9 +9,9 @@ namespace controleDeProvas
     class Aluno:Pessoa
     {
         private string _curso;
-        // private int _turma;
+   
         private bool _feito;
-        //private double _nota;
+        
 
         
         public List<Prova> minhasProvas { get; }

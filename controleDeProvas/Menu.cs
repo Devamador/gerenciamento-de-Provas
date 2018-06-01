@@ -24,6 +24,7 @@ namespace controleDeProvas
             Console.Write("\tOPÇÃO: ");
             op = int.Parse(Console.ReadLine());
             Console.Clear();
+            
 
             return op;
         }
